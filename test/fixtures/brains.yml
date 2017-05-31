@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flavor: MyString
+  iq: 1
+  fresh: false
+
+two:
+  flavor: MyString
+  iq: 1
+  fresh: false

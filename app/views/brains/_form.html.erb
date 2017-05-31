@@ -1,0 +1,36 @@
+<%= form_with(model: brain, local: true) do |form| %>
+  <% if brain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(brain.errors.count, "error") %> prohibited this brain from being saved:</h2>
+
+      <ul>
+      <% brain.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+    <%= form.collection_select :zombie_id, Zombie.order(:name), :id, :name, include_blank:true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :flavor %>
+    <%= form.text_field :flavor, id: :brain_flavor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :iq %>
+    <%= form.number_field :iq, id: :brain_iq %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fresh %>
+    <%= form.check_box :fresh, id: :brain_fresh %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
