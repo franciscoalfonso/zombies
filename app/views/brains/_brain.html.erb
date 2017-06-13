@@ -1,0 +1,10 @@
+<%= div_for brain do%>
+    <p>
+     <strong>
+        Agregado:
+        <%= time_ago_in_words(brain.created_at)%>
+     </strong>
+     <br>
+     <%= brain.flavor%>
+    </p>
+<% end %>

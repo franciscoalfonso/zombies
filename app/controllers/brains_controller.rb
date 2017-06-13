@@ -25,12 +25,14 @@ class BrainsController < ApplicationController
   # POST /brains
   # POST /brains.json
   def create
-    @brain = Brain.new(brain_params)
+    @zombie =Zombie.find(params[:zombie_id]);
+    @brain = @zombie.brains.create(brain_params);
 
     respond_to do |format|
       if @brain.save
         format.html { redirect_to @brain, notice: 'Brain was successfully created.' }
         format.json { render :show, status: :created, location: @brain }
+        format.js #create js.erb
       else
         format.html { render :new }
         format.json { render json: @brain.errors, status: :unprocessable_entity }

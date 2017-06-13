@@ -25,5 +25,30 @@
   <%= @zombie.rooten %>
 </p>
 
+<div id="brains">
+  <%= render :partial => @zombie.brains.reverse %>
+</div>
+
+<%= form_for([@zombie,Brain.new],remote:true)do|f|%>
+  <div class="field">
+  <%= f.label :flavor %>
+  <%= f.text_field :flavor %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :iq %>
+  <%= f.number_field :iq %>
+  </div>
+
+  <div class="field">
+  <%= f.label :fresh %>
+  <%= f.check_box :fresh %>
+  </div>
+
+  <div class="actions">
+    <%=f.submit"Add brain"%>
+  </div>
+<%end %>
+
 <%= link_to 'Edit', edit_zombie_path(@zombie) %> |
 <%= link_to 'Back', zombies_path %>

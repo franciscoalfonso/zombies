@@ -22,9 +22,9 @@
         <td><%= zombie.age %></td>
         <td><%= zombie.email %></td>
         <td><%= zombie.rooten ? "yes" : "no" %></td>
-        <td><%= link_to 'Show', zombie %></td>
-        <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
-        <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', zombie ,class:'button primary'%></td>
+        <td><%= link_to 'Edit', edit_zombie_path(zombie), class:'button success' %></td>
+        <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?' }, class:'button alert' %></td>
       </tr>
     <% end %>
   </tbody>
