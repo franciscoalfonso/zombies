@@ -17,7 +17,7 @@ class ZombiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create zombie" do
     assert_difference('Zombie.count') do
-      post zombies_url, params: { zombie: { age: @zombie.age, bio: @zombie.bio, email: @zombie.email, name: @zombie.name, rooten: @zombie.rooten } }
+      post zombies_url, params: { zombie: { age: @zombie.age, bio: @zombie.bio, email: @zombie.email, name: @zombie.name, rooten: @zombie.rooten, @zombie.avatar } }
     end
 
     assert_redirected_to zombie_url(Zombie.last)
@@ -34,7 +34,7 @@ class ZombiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update zombie" do
-    patch zombie_url(@zombie), params: { zombie: { age: @zombie.age, bio: @zombie.bio, email: @zombie.email, name: @zombie.name, rooten: @zombie.rooten } }
+    patch zombie_url(@zombie), params: { zombie: { age: @zombie.age, bio: @zombie.bio, email: @zombie.email, name: @zombie.name, rooten: @zombie.rooten,@zombie.avatar } }
     assert_redirected_to zombie_url(@zombie)
   end
 

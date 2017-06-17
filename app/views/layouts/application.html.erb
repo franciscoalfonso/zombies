@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "APLICACION" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Zombies" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -12,16 +12,21 @@
   </head>
 
   <body>
-   <div class="top-bar">
-    <div class="top-bar-left">
-     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">App zombie</li>
-      <li>
-       <%= link_to "Zombies",zombies_path %>
-      </li>
-     </ul>
-    </div>
-   </div>
+
+  <div class="top-bar">
+      <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+              <li class="menu-text">
+                  <a href="#">Zombies App</a>
+                  <ul class="menu">
+                      <li><%= link_to "Índice de Zombies", zombies_path %></li>
+                      <li><%= link_to "Nuevo Zombie", new_zombie_path %></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+   
     <%= yield %>
 
   </body>

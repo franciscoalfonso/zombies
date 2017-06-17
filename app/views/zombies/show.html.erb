@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<div class="field small-15 large-3 columns">
+    <%= image_tag(@zombie.avatar_url) if @zombie.avatar? %>
+</div>
+
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @zombie.name %>
 </p>
 
@@ -11,44 +15,63 @@
 </p>
 
 <p>
-  <strong>Age:</strong>
+  <strong>Edad:</strong>
   <%= @zombie.age %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>E-Mail:</strong>
   <%= @zombie.email %>
 </p>
 
 <p>
-  <strong>Rooten:</strong>
-  <%= @zombie.rooten %>
+  <strong>Podrido:</strong>
+  <%= @zombie.rooten ? "Sí" : "No" %>
+  <!--#%= @zombie.rooten %-->
 </p>
 
-<div id="brains">
-  <%= render :partial => @zombie.brains.reverse %>
+
+
+<div>
+    <h3>Cerebros</h3>
 </div>
 
-<%= form_for([@zombie,Brain.new],remote:true)do|f|%>
-  <div class="field">
-  <%= f.label :flavor %>
-  <%= f.text_field :flavor %>
+<div id="brains">
+    <%= render :partial => @zombie.brains.reverse %>
+</div>
+
+<div>
+    <h3>Agregar</h3>
+</div>
+
+<%= form_for([@zombie, Brain.new], remote: true) do |f| %>
+ 
+<div class="row">
+ 
+  <div class="field small-15 large-6 columns">
+    <%= f.label :flavor %>
+    <%= f.text_field :flavor %>
   </div>
   
-  <div class="field">
-  <%= f.label :iq %>
-  <%= f.number_field :iq %>
+  <div class="field small-15 large-6 columns">
+    <%= f.label :iq %>
+    <%= f.number_field :iq %>
   </div>
-
-  <div class="field">
-  <%= f.label :fresh %>
-  <%= f.check_box :fresh %>
+  
+  <div class="field small-15 large-15 columns">
+    <%= f.label :fresh %>
+    <%= f.check_box :fresh %>
   </div>
-
-  <div class="actions">
-    <%=f.submit"Add brain"%>
+  
+  <div class="actions small-15 large-15 columns ">
+    <%= f.submit 'Crear Cerebro', class:'hollow button success' %>
   </div>
-<%end %>
+  
+</div>
+  
+<% end %>
 
-<%= link_to 'Edit', edit_zombie_path(@zombie) %> |
-<%= link_to 'Back', zombies_path %>
+<!--a class="hollow button success"-->
+<%= link_to '<button class="button success"> Editar Zombie </button>'.html_safe, edit_zombie_path(@zombie) %>
+ 
+<%= link_to '<button class="button"> Regresar </button>'.html_safe, zombies_path %>

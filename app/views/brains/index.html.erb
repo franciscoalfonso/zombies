@@ -25,9 +25,9 @@
           <%end %>
         </td>
         
-        <td><%= link_to 'Show', brain %></td>
-        <td><%= link_to 'Edit', edit_brain_path(brain) %></td>
-        <td><%= link_to 'Destroy', brain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', brain, class:'button primary' %></td>
+        <td><%= link_to 'Edit', edit_brain_path(brain), class:'button success' %></td>
+        <td><%= link_to 'Destroy', brain, method: :delete, data: { confirm: 'Are you sure?', class:'button alert' } %></td>
       </tr>
     <% end %>
   </tbody>
