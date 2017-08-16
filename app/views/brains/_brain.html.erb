@@ -1,10 +1,28 @@
+<table class="hover">
 <%= div_for brain do%>
-    <p>
-     <strong>
-        Agregado:
-        <%= time_ago_in_words(brain.created_at)%>
-     </strong>
-     <br>
-     <%= brain.flavor%>
-    </p>
-<% end %>
+ 
+   <tbody>
+<tr>
+  <td>
+  <td width ="1000">    
+    <%= time_ago_in_words(brain.created_at)%>
+    </td>
+    <td width="500">   
+    <%= brain.flavor%>
+    </td>
+    
+    <td width="300">
+    <%= brain.iq%>
+    </td>
+    <td width="500" >
+    <% if brain.fresh%>
+        <%= image_tag 'brains/imagen1.jpg',class:'brains_fresh'%>
+        <%else%>
+        <%= image_tag 'brains/imagen2.jpg',class:'brains_fresh'%>
+        <%end%>
+    </td>
+      </td>
+     </tr>
+     </tbody>
+      <% end %> 
+         </table>

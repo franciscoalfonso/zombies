@@ -4,12 +4,9 @@ one:
   name: MyString
   bio: MyText
   age: 1
-  email: MyString
-  rooten: false
 
 two:
   name: MyString
   bio: MyText
   age: 1
-  email: MyString
-  rooten: false
+  

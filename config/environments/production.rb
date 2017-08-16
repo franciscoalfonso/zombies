@@ -1,6 +1,7 @@
 Rails.application.configure do
+  
   # Settings specified here will take precedence over those in config/application.rb.
-
+   
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -9,6 +10,8 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+ #assets conserve sus rutas originales 
+  config.serve_static_assets = true
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -80,6 +83,8 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  config.serve_static_assets = true
+  
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

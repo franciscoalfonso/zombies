@@ -4,18 +4,38 @@ class ZombiesController < ApplicationController
   # GET /zombies
   # GET /zombies.json
   def index
+     
+      #if current_admin
+     #@zombies = Zombie.all
+    #@rotten_zombies = Zombie.where(rotten: true)
+   #else if current_user
+    role= current_user.role
+    if role == "Contributor"
+    @zombies = Zombie.where(user_id:  current_user.id)
+    else    
     @zombies = Zombie.all
-    @rooten_zombies=Zombie.where(rooten:true)
+    @rotten_zombies = Zombie.where(rooten: true)
+     #end 
+  #end
   end
-
+  end  
   # GET /zombies/1
   # GET /zombies/1.json
-  def show
+  def user
+      @users = User.all
+  end
+    def show
   end
 
   # GET /zombies/new
   def new
+    role= current_user.role
+    if role == "Subscriber"
+    flash[:notice]= "No puedes crear un nuevo zombie"
+    redirect_to zombies_path
+    else    
     @zombie = Zombie.new
+  end
   end
 
   # GET /zombies/1/edit
@@ -26,10 +46,11 @@ class ZombiesController < ApplicationController
   # POST /zombies.json
   def create
     @zombie = Zombie.new(zombie_params)
+    @zombie.user_id = current_user.id  
 
     respond_to do |format|
       if @zombie.save
-        format.html { redirect_to @zombie, notice: 'Zombie was successfully created.' }
+        format.html { redirect_to @zombie, notice: 'Zombie creado' }
         format.json { render :show, status: :created, location: @zombie }
       else
         format.html { render :new }
@@ -43,7 +64,7 @@ class ZombiesController < ApplicationController
   def update
     respond_to do |format|
       if @zombie.update(zombie_params)
-        format.html { redirect_to @zombie, notice: 'Zombie was successfully updated.' }
+        format.html { redirect_to @zombie, notice: '¡El Zombie ha sido actualizado exitosamente!' }
         format.json { render :show, status: :ok, location: @zombie }
       else
         format.html { render :edit }
@@ -57,7 +78,7 @@ class ZombiesController < ApplicationController
   def destroy
     @zombie.destroy
     respond_to do |format|
-      format.html { redirect_to zombies_url, notice: 'Zombie was successfully destroyed.' }
+      format.html { redirect_to zombies_url, notice: '¡Eliminado!' }
       format.json { head :no_content }
     end
   end

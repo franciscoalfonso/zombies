@@ -1,12 +1,11 @@
 class Zombie < ApplicationRecord
     has_many :brains
-    
+    belongs_to :user
    
     
     validates :bio, length: { maximum: 100 }
     validates :name, presence: true
     validates :age, numericality: {only_integer: true, message: "Sólo se permiten números enteros"}
-    
     
     class EmailValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)

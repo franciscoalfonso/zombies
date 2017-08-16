@@ -2,10 +2,7 @@
 
 one:
   flavor: MyString
-  iq: 1
-  fresh: false
 
 two:
   flavor: MyString
-  iq: 1
-  fresh: false
+

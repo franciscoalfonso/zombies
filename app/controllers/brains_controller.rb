@@ -6,7 +6,6 @@ class BrainsController < ApplicationController
   def index
     @brains = Brain.all
   end
-
   # GET /brains/1
   # GET /brains/1.json
   def show
@@ -15,7 +14,7 @@ class BrainsController < ApplicationController
   # GET /brains/new
   def new
     @brain = Brain.new
-    #zombies = Zombies.all  
+    @zombies = Zombie.all
   end
 
   # GET /brains/1/edit
@@ -25,14 +24,15 @@ class BrainsController < ApplicationController
   # POST /brains
   # POST /brains.json
   def create
-    @zombie =Zombie.find(params[:zombie_id]);
-    @brain = @zombie.brains.create(brain_params);
+    # @brain = Brain.new(brain_params)
+      @zombie = Zombie.find(params[:zombie_id]);
+      @brain = @zombie.brains.create(brain_params);
 
     respond_to do |format|
       if @brain.save
-        format.html { redirect_to @brain, notice: 'Brain was successfully created.' }
+        format.html { redirect_to @brain, notice: 'El Cerebro fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @brain }
-        format.js #create js.erb
+          format.js #create.js.erb
       else
         format.html { render :new }
         format.json { render json: @brain.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class BrainsController < ApplicationController
   def update
     respond_to do |format|
       if @brain.update(brain_params)
-        format.html { redirect_to @brain, notice: 'Brain was successfully updated.' }
+        format.html { redirect_to @brain, notice: 'El Cerebro fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @brain }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class BrainsController < ApplicationController
   def destroy
     @brain.destroy
     respond_to do |format|
-      format.html { redirect_to brains_url, notice: 'Brain was successfully destroyed.' }
+      format.html { redirect_to brains_url, notice: 'El Cerebro fue destruido exitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -72,6 +72,6 @@ class BrainsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def brain_params
-      params.require(:brain).permit(:flavor, :iq, :fresh, :zombie_id)
+      params.require(:brain).permit(:zombie_id, :flavor, :iq, :fresh)
     end
 end

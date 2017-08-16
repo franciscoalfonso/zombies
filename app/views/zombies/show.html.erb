@@ -5,7 +5,7 @@
 </div>
 
 <p>
-  <strong>Nombre:</strong>
+  <strong>Name:</strong>
   <%= @zombie.name %>
 </p>
 
@@ -15,7 +15,7 @@
 </p>
 
 <p>
-  <strong>Edad:</strong>
+  <strong>Age:</strong>
   <%= @zombie.age %>
 </p>
 
@@ -25,46 +25,55 @@
 </p>
 
 <p>
-  <strong>Podrido:</strong>
+  <strong>Rooten:</strong>
   <%= @zombie.rooten ? "Sí" : "No" %>
-  <!--#%= @zombie.rooten %-->
+  <!--#%= @zombie.rotten %-->
 </p>
 
 
 
 <div>
-    <h3>Cerebros</h3>
+    <h2><small>C E R E B R O S</small></h2>
 </div>
-
+<table class="hover">
+   <tbody>
+<tr>
+<td><h6> Agregado hace:</h6></td>
+<td><h6>Sabor:</h6></td>
+<td><h6>Iq:</h6></td>
+<td><h6>Fresco:</h6></td>
+</tr>
+   </tbody>
+</table>
 <div id="brains">
     <%= render :partial => @zombie.brains.reverse %>
 </div>
 
 <div>
-    <h3>Agregar</h3>
+    <h5>Agrega cerebro al zombie</h5>
 </div>
 
 <%= form_for([@zombie, Brain.new], remote: true) do |f| %>
  
 <div class="row">
  
-  <div class="field small-15 large-6 columns">
+  <div class="medium-6 columns">
     <%= f.label :flavor %>
     <%= f.text_field :flavor %>
   </div>
   
-  <div class="field small-15 large-6 columns">
+  <div class="medium-6 columns">
     <%= f.label :iq %>
     <%= f.number_field :iq %>
   </div>
   
-  <div class="field small-15 large-15 columns">
+  <div class="medium-6 columns">
     <%= f.label :fresh %>
     <%= f.check_box :fresh %>
   </div>
   
-  <div class="actions small-15 large-15 columns ">
-    <%= f.submit 'Crear Cerebro', class:'hollow button success' %>
+  <div class="medium-6 columns">
+    <%= f.submit 'Crear Cerebro', class:'hollow button secondary' %>
   </div>
   
 </div>
@@ -72,6 +81,6 @@
 <% end %>
 
 <!--a class="hollow button success"-->
-<%= link_to '<button class="button success"> Editar Zombie </button>'.html_safe, edit_zombie_path(@zombie) %>
+<%= link_to '<button class="button warning"> Editar Zombie </button>'.html_safe, edit_zombie_path(@zombie) %>
  
-<%= link_to '<button class="button"> Regresar </button>'.html_safe, zombies_path %>
+<%= link_to '<button class="button secondary"> Regresar </button>'.html_safe, zombies_path %>
